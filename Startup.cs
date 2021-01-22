@@ -34,17 +34,16 @@ namespace TaskMasterCSharp
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-
       services.AddAuthentication(options =>
-{
-  options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-  options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-{
-  options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
-  options.Audience = Configuration["Auth0:Audience"];
+            {
+              options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+              options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+              options.Authority = $"https://{Configuration["Auth0:Domain"]}/";
+              options.Audience = Configuration["Auth0:Audience"];
 
-});
+            });
 
       // NOTE This is akin the the whitelists in Node.js, allows sites listed on lines 53 & 54 to make requests to server, these methods must be finalized in configure
       services.AddCors(options =>
@@ -53,8 +52,8 @@ namespace TaskMasterCSharp
       {
         builder
         .WithOrigins(new string[]{
-        "https://localhost:8080",
-        "https://localhost:8081"
+        "http://localhost:8080",
+        "http://localhost:8081"
 
         }).AllowAnyMethod()
         .AllowAnyHeader()
@@ -98,6 +97,8 @@ namespace TaskMasterCSharp
 
       app.UseAuthentication();
       app.UseAuthorization();
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
 
       app.UseEndpoints(endpoints =>
       {
