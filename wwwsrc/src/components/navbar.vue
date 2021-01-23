@@ -34,10 +34,10 @@
           </router-link>
         </li> -->
       </ul>
-      <div class="input-group col-6">
-        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+      <div class="input-group col-4 pr-5">
+        <input type="text" class="form-control" placeholder="Create New Task" aria-label="Create New Task" aria-describedby="button-addon2">
         <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-          Find
+          &#43;
         </button>
       </div>
       <span class="navbar-text">
