@@ -1,12 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img
+      <div class="d-flex align-items-start">
+        <!-- <img
           alt="logo"
           src="../assets/img/cw-logo.png"
           height="45"
-        />
+        /> -->
+        <i class="bi bi-list-check"></i>
       </div>
     </router-link>
     <button
@@ -23,16 +24,22 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+          <router-link :to="{ name: 'Home' }" class="nav-link mt-1">
+            Tasks Master
           </router-link>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <router-link :to="{ name: 'About' }" class="nav-link">
             About
           </router-link>
-        </li>
+        </li> -->
       </ul>
+      <div class="input-group col-6">
+        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+          Find
+        </button>
+      </div>
       <span class="navbar-text">
         <button
           class="btn btn-outline-primary text-uppercase"
@@ -123,5 +130,9 @@ a:hover {
 }
 .nav-item .nav-link.router-link-exact-active{
   color: var(--primary);
+}
+.bi-list-check{
+  font-size: 2rem;
+  color: #FF3697;
 }
 </style>
