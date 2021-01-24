@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Dapper;
 using TaskMasterCSharp.Models;
 
@@ -28,10 +29,13 @@ namespace TaskMasterCSharp.Repositories
       return _db.ExecuteScalar<int>(sql, newList);
     }
 
-    public List GetListById(int id)
+    internal List GetListById(int id)
     {
-      string sql = @"SELECT * FROM lists WHERE id = @Id";
-      return _db.QueryFirstOrDefault<List>(sql, new { id });
+      // NOTE originally created to get by id, but did not populate the creator of the list
+      // string sql = @"SELECT * FROM lists WHERE id = @Id";
+      // return _db.QueryFirstOrDefault<List>(sql, new { id });
+      string sql = populateCreator + "WHERE list.id = @Id";
+      return _db.Query<List, Profile, List>(sql, (list, profile) => { list.Creator = profile; return list; }, new { id }, splitOn: "id").FirstOrDefault();
     }
 
     public IEnumerable<List> GetLists()
