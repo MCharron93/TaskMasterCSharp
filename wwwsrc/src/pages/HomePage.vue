@@ -1,6 +1,15 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center bg-synth">
+  <div class="home flex-grow-1 bg-synth">
     <!-- NOTE Insert component for tasks here -->
+    <div class="container m-3">
+      <div class="row my-5">
+        <div class="col-12">
+          <div class="card-columns m-2">
+            <list-component v-for="l in lists" :key="l.id" :list-prop="l" class="card-container mx-2" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -8,7 +17,9 @@
 import { computed, onMounted } from 'vue'
 import { accountService } from '../services/AccountService'
 import { AppState } from '../AppState'
+import ListComponent from '../components/ListComponent.vue'
 export default {
+  components: { ListComponent },
   name: 'Home',
   setup() {
     onMounted(async() => {

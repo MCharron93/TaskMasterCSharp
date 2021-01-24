@@ -15,7 +15,7 @@ class AccountService {
   async getLists() {
     try {
       const res = await api.get('/api/list')
-      logger.log(res.data)
+      AppState.lists = res.data
     } catch (error) {
       logger.log(error)
     }
