@@ -5,7 +5,7 @@
 --   picture VARCHAR(255) NOT NULL,
 --   PRIMARY KEY (id)
 -- )
--- CREATE TABLE blogs (
+-- CREATE TABLE lists (
 --     id INT NOT NULL AUTO_INCREMENT,
 --     title VARCHAR(255) NOT NULL,
 --     body VARCHAR(255) NOT NULL,
