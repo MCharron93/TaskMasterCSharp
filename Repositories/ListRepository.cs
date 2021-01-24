@@ -28,6 +28,12 @@ namespace TaskMasterCSharp.Repositories
       return _db.ExecuteScalar<int>(sql, newList);
     }
 
+    public List GetListById(int id)
+    {
+      string sql = @"SELECT * FROM lists WHERE id = @Id";
+      return _db.QueryFirstOrDefault<List>(sql, new { id });
+    }
+
     public IEnumerable<List> GetLists()
     {
       string sql = populateCreator;

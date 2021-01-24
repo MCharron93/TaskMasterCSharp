@@ -48,5 +48,18 @@ namespace TaskMasterCSharp.Controllers
         return BadRequest(e.Message);
       }
     }
+
+    [HttpGet("{id}")]
+    public ActionResult<IEnumerable<List>> GetListById(int id)
+    {
+      try
+      {
+        return Ok(_bs.GetListById(id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
   }
 }

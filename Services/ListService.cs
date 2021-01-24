@@ -24,5 +24,10 @@ namespace TaskMasterCSharp.Services
     {
       return _repo.GetLists();
     }
+
+    public List GetListById(int id)
+    {
+      return _repo.GetListById(id);
+    }
   }
 }
