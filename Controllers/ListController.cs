@@ -43,10 +43,9 @@ namespace TaskMasterCSharp.Controllers
       {
         return Ok(_bs.GetLists());
       }
-      catch (System.Exception)
+      catch (System.Exception e)
       {
-
-        throw;
+        return BadRequest(e.Message);
       }
     }
   }

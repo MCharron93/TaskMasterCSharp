@@ -2,11 +2,6 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-start">
-        <!-- <img
-          alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
-        /> -->
         <i class="bi bi-list-check"></i>
       </div>
     </router-link>
@@ -35,7 +30,7 @@
         </li> -->
       </ul>
       <div class="input-group col-4 pr-5">
-        <input type="text" class="form-control" placeholder="Create New Task" aria-label="Create New Task" aria-describedby="button-addon2">
+        <input type="text" class="form-control bg-dark text-secondary" placeholder="Create New Task" aria-label="Create New Task" aria-describedby="button-addon2">
         <button class="btn btn-outline-secondary neon" type="button" id="button-addon2">
           &#43;
         </button>

@@ -1,15 +1,23 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center bg-synth">
-    <!-- <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"> -->
-    <!-- <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center neon">
-      <span class="mx-2 text-white">Click to see tasks</span> -->
-    <!-- </h1> -->
+    <!-- NOTE Insert component for tasks here -->
   </div>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue'
+import { accountService } from '../services/AccountService'
+import { AppState } from '../AppState'
 export default {
-  name: 'Home'
+  name: 'Home',
+  setup() {
+    onMounted(async() => {
+      await accountService.getLists()
+    })
+    return {
+      lists: computed(() => AppState.lists)
+    }
+  }
 }
 </script>
 
@@ -24,6 +32,7 @@ export default {
 }
 .bg-synth{
   background-image: url('https://i.pinimg.com/originals/a3/b0/72/a3b072c9822be6e890b5758ce39f9e36.jpg');
+  background-position: center;
 }
 .neon:hover {
   background-color: #f038ff;

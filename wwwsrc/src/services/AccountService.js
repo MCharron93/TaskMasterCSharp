@@ -11,6 +11,15 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+  async getLists() {
+    try {
+      const res = await api.get('/api/list')
+      logger.log(res.data)
+    } catch (error) {
+      logger.log(error)
+    }
+  }
 }
 
 export const accountService = new AccountService()
