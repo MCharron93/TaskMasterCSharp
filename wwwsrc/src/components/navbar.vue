@@ -36,7 +36,7 @@
       </ul>
       <div class="input-group col-4 pr-5">
         <input type="text" class="form-control" placeholder="Create New Task" aria-label="Create New Task" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+        <button class="btn btn-outline-secondary neon" type="button" id="button-addon2">
           &#43;
         </button>
       </div>
@@ -134,5 +134,11 @@ a:hover {
 .bi-list-check{
   font-size: 2rem;
   color: #FF3697;
+}
+.neon:hover {
+  background-color: #f038ff;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
+  box-shadow: 10px 10px 99px 6px rgba(240, 56, 255, 1);
 }
 </style>
