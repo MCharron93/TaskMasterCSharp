@@ -1,6 +1,6 @@
 namespace TaskMasterCSharp.Models
 {
-  public class Blog
+  public class List
   {
     public string Title { get; set; }
     public string Body { get; set; }

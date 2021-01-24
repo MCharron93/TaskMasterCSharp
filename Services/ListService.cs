@@ -5,24 +5,24 @@ using TaskMasterCSharp.Repositories;
 
 namespace TaskMasterCSharp.Services
 {
-  public class BlogService
+  public class ListService
   {
-    private readonly BlogRepository _repo;
+    private readonly ListRepository _repo;
 
-    public BlogService(BlogRepository repo)
+    public ListService(ListRepository repo)
     {
       _repo = repo;
     }
 
-    public Blog Create(Blog newBlog)
+    public List Create(List newList)
     {
-      newBlog.Id = _repo.Create(newBlog);
-      return newBlog;
+      newList.Id = _repo.Create(newList);
+      return newList;
     }
 
-    public IEnumerable<Blog> GetBlogs()
+    public IEnumerable<List> GetLists()
     {
-      return _repo.GetBlogs();
+      return _repo.GetLists();
     }
   }
 }

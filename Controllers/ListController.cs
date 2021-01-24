@@ -10,24 +10,24 @@ namespace TaskMasterCSharp.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class BlogController : ControllerBase
+  public class ListController : ControllerBase
   {
-    private readonly BlogService _bs;
+    private readonly ListService _bs;
 
-    public BlogController(BlogService bs)
+    public ListController(ListService bs)
     {
       _bs = bs;
     }
 
     [HttpPost]
     [Authorize]
-    public async Task<ActionResult<Blog>> Create([FromBody] Blog newBlog)
+    public async Task<ActionResult<List>> Create([FromBody] List newList)
     {
       try
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-        newBlog.CreatorId = userInfo.Id;
-        Blog createdNew = _bs.Create(newBlog);
+        newList.CreatorId = userInfo.Id;
+        List createdNew = _bs.Create(newList);
         return Ok(createdNew);
       }
       catch (System.Exception err)
@@ -37,11 +37,11 @@ namespace TaskMasterCSharp.Controllers
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Blog>> GetBlogs()
+    public ActionResult<IEnumerable<List>> GetLists()
     {
       try
       {
-        return Ok(_bs.GetBlogs());
+        return Ok(_bs.GetLists());
       }
       catch (System.Exception)
       {

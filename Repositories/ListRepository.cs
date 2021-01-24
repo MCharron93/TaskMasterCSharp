@@ -6,32 +6,32 @@ using TaskMasterCSharp.Models;
 
 namespace TaskMasterCSharp.Repositories
 {
-  public class BlogRepository
+  public class ListRepository
   {
     private readonly IDbConnection _db;
-    private readonly string populateCreator = "SELECT blog.*, profile.* FROM blogs blog INNER JOIN profiles profile ON blog.creatorId = profile.id";
+    private readonly string populateCreator = "SELECT list.*, profile.* FROM lists list INNER JOIN profiles profile ON list.creatorId = profile.id";
 
-    public BlogRepository(IDbConnection db)
+    public ListRepository(IDbConnection db)
     {
       _db = db;
     }
 
-    public int Create(Blog newBlog)
+    public int Create(List newList)
     {
       string sql = @"
-      INSERT INTO blogs
+      INSERT INTO lists
       (title, body, creatorId)
       VALUES
       (@Title, @Body, @CreatorId);
       SELECT LAST_INSERT_ID();
       ";
-      return _db.ExecuteScalar<int>(sql, newBlog);
+      return _db.ExecuteScalar<int>(sql, newList);
     }
 
-    public IEnumerable<Blog> GetBlogs()
+    public IEnumerable<List> GetLists()
     {
       string sql = populateCreator + "WHERE isPublished = 1";
-      return _db.Query<Blog, Profile, Blog>(sql, (blog, profile) => { blog.Creator = profile; return blog; }, splitOn: "id");
+      return _db.Query<List, Profile, List>(sql, (list, profile) => { list.Creator = profile; return list; }, splitOn: "id");
     }
   }
 }

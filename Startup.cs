@@ -69,8 +69,8 @@ namespace TaskMasterCSharp
       services.AddScoped<IDbConnection>(x => CreateDbConnection());
       services.AddTransient<ProfileService>();
       services.AddTransient<ProfileRepository>();
-      services.AddTransient<BlogService>();
-      services.AddTransient<BlogRepository>();
+      services.AddTransient<ListService>();
+      services.AddTransient<ListRepository>();
     }
 
     private IDbConnection CreateDbConnection()
