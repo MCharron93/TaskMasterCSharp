@@ -9,7 +9,7 @@ namespace TaskMasterCSharp.Repositories
   public class ListRepository
   {
     private readonly IDbConnection _db;
-    private readonly string populateCreator = "SELECT list.*, profile.* FROM lists list INNER JOIN profiles profile ON list.creatorId = profile.id";
+    private readonly string populateCreator = "SELECT list.*, profile.* FROM lists list INNER JOIN profiles profile ON list.creatorId = profile.id ";
 
     public ListRepository(IDbConnection db)
     {
@@ -30,7 +30,7 @@ namespace TaskMasterCSharp.Repositories
 
     public IEnumerable<List> GetLists()
     {
-      string sql = populateCreator + "WHERE isPublished = 1";
+      string sql = populateCreator;
       return _db.Query<List, Profile, List>(sql, (list, profile) => { list.Creator = profile; return list; }, splitOn: "id");
     }
   }
