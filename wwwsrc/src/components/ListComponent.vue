@@ -6,8 +6,12 @@
       </h3>
       <span @click="deleteList()">&times;</span>
     </div>
-    <div class="body bg-dark text-success p-2">
-      {{ listProp.body }}
+    <div class="body bg-dark text-success p-2 d-flex">
+      <!-- NOTE Insert tasks here -->
+      <input type="text" placeholder="Create new task" class="form-control bg-dark text-success border border-success">
+      <button class="btn btn-outline-success neon-two" type="button" id="button-addon2">
+        &#43;
+      </button>
     </div>
   </div>
 </template>
@@ -33,5 +37,10 @@ export default {
 </script>
 
 <style>
-
+.neon-two:hover {
+  background-color: #b9e769;
+  -webkit-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+  -moz-box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+  box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
+}
 </style>
